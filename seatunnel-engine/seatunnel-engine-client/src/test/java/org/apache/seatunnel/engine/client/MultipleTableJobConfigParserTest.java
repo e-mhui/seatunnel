@@ -76,7 +76,7 @@ public class MultipleTableJobConfigParserTest {
     public void testComplexJobParse() {
         Common.setDeployMode(DeployMode.CLIENT);
         String filePath =
-                ContentFormatUtilTest.getResource("/batch_fakesource_to_file_complex.conf");
+                ContentFormatUtilTest.getResource("/streaming_fakesource_to_file_complex.conf");
         JobConfig jobConfig = new JobConfig();
         jobConfig.setJobContext(new JobContext());
         MultipleTableJobConfigParser jobConfigParser =
