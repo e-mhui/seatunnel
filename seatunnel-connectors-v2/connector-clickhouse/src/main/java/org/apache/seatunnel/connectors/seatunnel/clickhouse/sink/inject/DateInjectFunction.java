@@ -20,8 +20,12 @@ package org.apache.seatunnel.connectors.seatunnel.clickhouse.sink.inject;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class DateInjectFunction implements ClickhouseFieldInjectFunction {
+
+    private static final Pattern PATTERN = Pattern.compile("(Date|Date32)");
+
     @Override
     public void injectFields(PreparedStatement statement, int index, Object value)
             throws SQLException {
@@ -34,6 +38,6 @@ public class DateInjectFunction implements ClickhouseFieldInjectFunction {
 
     @Override
     public boolean isCurrentFieldType(String fieldType) {
-        return "Date".equals(fieldType);
+        return PATTERN.matcher(fieldType).matches();
     }
 }
